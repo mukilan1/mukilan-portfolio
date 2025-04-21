@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LuxuryHomeView from '../views/luxury/view';
 import HomeController from '../controllers/home/controller';
 import Cursor from '../components/Cursor';
+import LuxuryBackground from '../components/LuxuryBackground';
 
 export default function Home() {
   const controller = new HomeController();
@@ -57,6 +58,7 @@ export default function Home() {
   
   return (
     <main className="luxury-experience">
+      <LuxuryBackground />
       <Cursor />
       <LuxuryHomeView 
         heroData={controller.getHeroData()}

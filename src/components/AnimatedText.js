@@ -19,6 +19,7 @@ const AnimatedText = ({ text }) => {
       span.style.display = 'inline-block';
       span.style.transition = `opacity 0.5s ease, transform 0.5s ease`;
       span.style.transitionDelay = `${i * 0.05}s`;
+      
       setTimeout(() => {
         span.style.opacity = '1';
         span.style.transform = 'translateY(0)';
