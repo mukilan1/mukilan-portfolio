@@ -76,105 +76,102 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
   
   return (
     <div className="luxury-portfolio">
-      {/* Hero Section - Immersive Full-Screen Introduction */}
+      {/* Elite Hero Section - New Design */}
       <section 
         id="hero"
         ref={addSectionRef('hero')}
-        className="h-screen relative flex items-center justify-center overflow-hidden"
+        className="h-screen relative flex items-center justify-center overflow-hidden elite-hero"
         data-scroll-section
       >
-        <div className="hero-background">
-          <div className="particles-container"></div>
-          <div className="gradient-overlay"></div>
+        {/* Minimalist Background */}
+        <div className="absolute inset-0 bg-[#080808]">
+          {/* Subtle grain texture */}
+          <div className="noise-overlay"></div>
+          
+          {/* Refined gold accent line */}
+          <div className="accent-line"></div>
+          
+          {/* Elegant corner mark */}
+          <div className="corner-mark top-left"></div>
+          <div className="corner-mark top-right"></div>
+          <div className="corner-mark bottom-left"></div>
+          <div className="corner-mark bottom-right"></div>
         </div>
         
-        <div className="absolute inset-0">
-          <div className="gold-line-top"></div>
-          <div className="gold-line-bottom"></div>
-          <div className="gold-corner top-left"></div>
-          <div className="gold-corner top-right"></div>
-          <div className="gold-corner bottom-left"></div>
-          <div className="gold-corner bottom-right"></div>
-        </div>
-        
-        <div className="container mx-auto px-8 z-10 text-center">
-          <div 
-            className="mb-4 fade-in-up"
-            data-animate
-            style={{ 
-              opacity: 0, 
-              transform: 'translateY(50px)',
-              transition: 'opacity 1.2s ease, transform 1.2s ease'
-            }}
-          >
-            <span className="gold-text text-sm uppercase tracking-[0.3em] font-light">
-              {heroData.entrepreneur}
-            </span>
-          </div>
-          
-          <AnimatedHeading text={heroData.name} />
-          
-          <div 
-            className="mt-6 mb-10 fade-in-up"
-            data-animate
-            style={{ 
-              opacity: 0, 
-              transform: 'translateY(30px)',
-              transition: 'opacity 1s ease, transform 1s ease',
-              transitionDelay: '0.6s'
-            }}
-          >
-            <h2 className="text-2xl font-light tracking-wide text-gray-300">
-              {heroData.title}
-            </h2>
-          </div>
-          
-          <div 
-            className="relative w-40 h-40 mx-auto mt-12 mb-16 fade-in"
-            data-animate
-            style={{ 
-              opacity: 0,
-              transition: 'opacity 1.5s ease',
-              transitionDelay: '1.2s'
-            }}
-          >
-            <div className="rotating-circle"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-gold">
-                <Image 
-                  src={heroData.image}
-                  alt={heroData.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="scale-110 hover:scale-100 transition-transform duration-1000"
-                />
+        {/* Main Content */}
+        <div className="container relative z-10 mx-auto px-4 h-full">
+          <div className="hero-layout">
+            {/* Left content area */}
+            <div className="hero-content-left">
+              <div className="vertical-text">
+                <span>Est. <span className="highlight-accent">2023</span></span>
+              </div>
+              
+              <div className="personal-brand">
+                <span className="brand-mark">M</span>
+              </div>
+            </div>
+            
+            {/* Center content area */}
+            <div className="hero-content-center">
+              <div className="fade-in-sequence">
+                <span className="profession-tag">{heroData.entrepreneur}</span>
+                
+                <h1 className="elite-name">{heroData.name}</h1>
+                
+                <div className="title-line"></div>
+                
+                <p className="elite-title">{heroData.title}</p>
+                
+                <div className="hero-actions">
+                  <button className="elite-button primary">
+                    <span className="btn-text">View Portfolio</span>
+                    <span className="btn-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  
+                  <button className="elite-button secondary">
+                    <span className="btn-text">Contact</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right content area */}
+            <div className="hero-content-right">
+              <div className="image-frame">
+                <div className="image-container">
+                  <Image 
+                    src={heroData.image}
+                    alt={heroData.name}
+                    layout="fill"
+                    objectFit="cover"
+                    className="hero-image"
+                  />
+                  <div className="image-overlay"></div>
+                </div>
+                <div className="frame-decoration top"></div>
+                <div className="frame-decoration right"></div>
+                <div className="frame-decoration bottom"></div>
+                <div className="frame-decoration left"></div>
+              </div>
+              
+              <div className="expertise-tags">
+                <div className="tag">App Developer</div>
+                <div className="tag">Automation</div>
+                <div className="tag">Robotics</div>
               </div>
             </div>
           </div>
           
-          <div 
-            className="flex flex-wrap justify-center gap-6 mt-8 fade-in-up"
-            data-animate
-            style={{ 
-              opacity: 0, 
-              transform: 'translateY(20px)',
-              transition: 'opacity 0.8s ease, transform 0.8s ease',
-              transitionDelay: '1.8s'
-            }}
-          >
-            <button className="luxury-button primary">
-              <span className="button-text">View Portfolio</span>
-              <span className="button-icon">→</span>
-            </button>
-            <button className="luxury-button secondary">
-              <span className="button-text">Contact Me</span>
-            </button>
+          {/* Scroll indicator */}
+          <div className="elegant-scroll-indicator">
+            <div className="scroll-indicator-line"></div>
+            <span>Scroll</span>
           </div>
-        </div>
-        
-        <div className="scroll-indicator">
-          <div className="scroll-arrow"></div>
-          <div className="scroll-text">Scroll to Explore</div>
         </div>
       </section>
       
