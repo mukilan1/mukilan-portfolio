@@ -2526,3 +2526,249 @@ label {
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
+
+/* Add these scroll animation styles at the end of your file */
+
+/* Scroll-triggered animations */
+.scroll-animate {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-animate:not(.animate-visible) {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.scroll-animate.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays for child elements */
+.stagger-children > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.6s; }
+
+/* Parallax scroll effects */
+.parallax-scroll-up {
+  transform: translateY(0);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.parallax-slow {
+  transform: translateY(20px);
+}
+
+.parallax-medium {
+  transform: translateY(35px);
+}
+
+.parallax-fast {
+  transform: translateY(50px);
+}
+
+/* Add these responsive utility classes after your existing styles */
+
+/* Responsive utility classes */
+.container-fluid {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-responsive {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 576px) {
+  .container-responsive {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-responsive {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-responsive {
+    max-width: 1140px;
+  }
+}
+
+/* Enhanced mobile styles */
+@media (max-width: 767px) {
+  .elite-name {
+    font-size: 3.5rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .luxury-quote {
+    font-size: 1.5rem;
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .luxury-paragraph {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .elite-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .luxury-contact-card {
+    padding: 1.5rem;
+  }
+  
+  .scroll-indicator, 
+  .elegant-scroll-indicator {
+    bottom: 1rem;
+  }
+  
+  .side-nav {
+    display: none;
+  }
+
+  /* Improve project card layout on mobile */
+  .project-card {
+    height: auto;
+    min-height: 650px;
+  }
+  
+  .project-image {
+    height: 200px;
+  }
+}
+
+/* Fix the hero layout for mobile */
+@media (max-width: 767px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    padding: 20px 0;
+    gap: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .hero-content-left {
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .hero-content-center {
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  .hero-content-right {
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  
+  .image-frame {
+    width: 280px;
+    height: 350px;
+    margin-bottom: 1rem;
+  }
+  
+  .expertise-tags {
+    justify-content: center;
+  }
+  
+  .vertical-text {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
+/* Fixed positioning issues */
+.fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Ensure content doesn't overflow on small screens */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+/* Make the images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Additional spacing utilities */
+.p-responsive {
+  padding: 2rem;
+}
+
+@media (max-width: 767px) {
+  .p-responsive {
+    padding: 1rem;
+  }
+}
+
+/* Ensure buttons stay properly sized */
+.elite-button,
+.luxury-button {
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Fix for footer on mobile */
+@media (max-width: 767px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}

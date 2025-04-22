@@ -6,6 +6,8 @@ import LuxuryHomeView from '../views/luxury/view';
 import HomeController from '../controllers/home/controller';
 import Cursor from '../components/Cursor';
 import ErrorBoundary from '../components/ErrorBoundary';
+import ParallaxIllusion from '../components/ParallaxIllusion';
+import ResponsiveWrapper from '../components/ResponsiveWrapper';
 
 // Dynamically import components that might cause issues
 const LuxuryBackground = dynamic(() => import('../components/LuxuryBackground'), {
@@ -47,6 +49,8 @@ export default function Home() {
   
   return (
     <main className="luxury-experience">
+      <ResponsiveWrapper />
+      
       <ErrorBoundary>
         <Suspense fallback={<div style={{ minHeight: "100vh", backgroundColor: "#080808" }}></div>}>
           <OpeningAnimation />
@@ -62,6 +66,8 @@ export default function Home() {
       <ErrorBoundary>
         <Cursor />
       </ErrorBoundary>
+      
+      <ParallaxIllusion />
       
       <ErrorBoundary>
         <LuxuryHomeView 

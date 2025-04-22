@@ -53,21 +53,61 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
   
   // Animate elements when they become visible
   useEffect(() => {
-    const elementsToAnimate = document.querySelectorAll('.fade-in-up, .fade-in');
+    const elementsToAnimate = document.querySelectorAll('.fade-in-up, .fade-in, .scroll-animate');
     
+    // Enhanced observer that also handles parallax effects
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-visible');
+          
+          // Handle parallax effect elements
+          if (entry.target.classList.contains('parallax-parent')) {
+            const parallaxItems = entry.target.querySelectorAll('.parallax-scroll-up');
+            parallaxItems.forEach(item => {
+              item.style.transform = 'translateY(0)';
+            });
+          }
         }
       });
-    }, { threshold: 0.1 });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px' // Trigger slightly before element is fully in view
+    });
     
     elementsToAnimate.forEach(el => observer.observe(el));
     
+    // Handle parallax parents separately
+    const parallaxParents = document.querySelectorAll('.parallax-parent');
+    parallaxParents.forEach(el => observer.observe(el));
+    
     return () => {
       elementsToAnimate.forEach(el => observer.unobserve(el));
+      parallaxParents.forEach(el => observer.unobserve(el));
     };
+  }, []);
+  
+  // Also add a new effect to handle scroll position for parallax elements 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const parallaxElements = document.querySelectorAll('.parallax-scroll-up');
+      
+      parallaxElements.forEach(element => {
+        if (!element.classList.contains('animate-visible')) {
+          const parentBounds = element.closest('.parallax-parent')?.getBoundingClientRect();
+          if (parentBounds && parentBounds.top < window.innerHeight) {
+            const speed = element.classList.contains('parallax-slow') ? 0.05 :
+                          element.classList.contains('parallax-medium') ? 0.08 : 0.1;
+            const yPos = (window.innerHeight - parentBounds.top) * speed;
+            element.style.transform = `translateY(${Math.min(0, -yPos)}px)`;
+          }
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const addSectionRef = (key) => (el) => {
@@ -125,7 +165,7 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
                 
                 <div className="hero-actions">
                   <button className="elite-button primary">
-                    <span className="btn-text">View Portfolio</span>
+                    <span className="btn-text">View Resume</span>
                     <span className="btn-icon">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -133,7 +173,15 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
                     </span>
                   </button>
                   
-                  <button className="elite-button secondary">
+                  <button 
+                    className="elite-button secondary"
+                    onClick={() => {
+                      const contactSection = document.getElementById('contact');
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
                     <span className="btn-text">Contact</span>
                   </button>
                 </div>
@@ -291,7 +339,7 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
       <section 
         id="contact"
         ref={addSectionRef('contact')}
-        className="py-32 contact-section"
+        className="py-32 contact-section parallax-parent"
         data-scroll-section
       >
         <div className="container mx-auto px-8">
@@ -309,8 +357,8 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
               <h2 className="section-title">Start a Conversation</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="contact-info">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center stagger-children">
+              <div className="contact-info scroll-animate parallax-scroll-up parallax-medium">
                 <div className="contact-method">
                   <div className="icon-circle">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -365,7 +413,7 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
                 </div>
               </div>
               
-              <form className="contact-form">
+              <form className="contact-form scroll-animate parallax-scroll-up parallax-slow">
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
                   <input type="text" id="name" className="luxury-input" />
@@ -388,9 +436,9 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
       </section>
       
       {/* Footer */}
-      <footer className="luxury-footer" data-scroll-section>
+      <footer className="luxury-footer parallax-parent" data-scroll-section>
         <div className="container mx-auto px-8">
-          <div className="footer-content">
+          <div className="footer-content scroll-animate parallax-scroll-up parallax-fast">
             <div className="logo-section">
               <div className="footer-logo">M</div>
               <p>© {new Date().getFullYear()} Mukilan. All rights reserved.</p>
