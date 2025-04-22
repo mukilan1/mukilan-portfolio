@@ -3,12 +3,16 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// Add console log for debugging
+console.log('Initializing root layout');
+
 export const metadata = {
   title: 'Mukilan Portfolio',
   description: 'Luxury portfolio showcasing expertise in app development, automation, and robotics',
 }
 
 export default function RootLayout({ children }) {
+  console.log('Rendering root layout');
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>

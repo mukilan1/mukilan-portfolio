@@ -1,8 +1,11 @@
+/* Import Tailwind CSS */
 @import "tailwindcss";
+/* Tailwind CSS directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Root variables and existing styles */
 :root {
   --luxury-black: #080808;
   --luxury-dark: #121212;
@@ -1032,9 +1035,9 @@ label {
   background: linear-gradient(90deg, var(--luxury-gold) 0%, #f0e68c 20%, var(--luxury-gold) 40%);
   background-size: 200% auto;
   background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Remove non-standard property */
+  /* text-fill-color: transparent; */
   animation: shimmer 5s linear infinite;
 }
 
@@ -1249,6 +1252,12 @@ label {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(212, 175, 55, 0.8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Remove non-standard property */
+  /* text-fill-color: transparent; */
 }
 
 .name-letter {
@@ -2374,4 +2383,146 @@ label {
   100% {
     top: 100%;
   }
+}
+
+/* Add the opening animation styles */
+
+/* Opening Animation */
+.no-scroll {
+  overflow: hidden;
+}
+
+.opening-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOutAnimation 0.8s ease forwards;
+  animation-delay: 5s;
+}
+
+.animation-background {
+  position: absolute;
+  inset: 0;
+  background-color: var(--luxury-black);
+  z-index: -1;
+}
+
+.animation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.animation-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.animation-logo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, var(--luxury-gold), transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  /* Add standard mask property */
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: logoReveal 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.logo-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--luxury-gold);
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+.animation-divider {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+  animation: expandWidth 1.2s ease forwards;
+  animation-delay: 1.4s;
+}
+
+.animation-text {
+  overflow: hidden;
+  text-align: center;
+}
+
+.reveal-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2.2s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.reveal-text span {
+  margin: 0.2rem 0;
+  display: inline-block;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s ease forwards;
+}
+
+.reveal-text span:nth-child(1) { animation-delay: 2.4s; }
+.reveal-text span:nth-child(2) { animation-delay: 2.6s; }
+.reveal-text span:nth-child(3) { animation-delay: 2.8s; }
+.reveal-text span:nth-child(4) { animation-delay: 3.0s; }
+
+@keyframes fadeOutAnimation {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes logoReveal {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes expandWidth {
+  0% { width: 0; }
+  100% { width: 120px; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
