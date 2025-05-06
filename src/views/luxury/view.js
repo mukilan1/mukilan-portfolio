@@ -154,6 +154,18 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
             
             {/* Center content area */}
             <div className="hero-content-center">
+              {/* Add Navigation Menu for Hero Section */}
+              <div className="hero-navigation">
+                <nav className="flex justify-center mb-8">
+                  <ul className="flex items-center space-x-8">
+                    <li><a href="/" className="nav-link active">Home</a></li>
+                    <li><a href="/gallery" className="nav-link">Gallery</a></li>
+                    <li><a href="#projects" className="nav-link">Projects</a></li>
+                    <li><a href="#contact" className="nav-link">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+              
               <div className="fade-in-sequence">
                 <span className="profession-tag">{heroData.entrepreneur}</span>
                 
@@ -211,6 +223,9 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
                 <div className="tag">App Developer</div>
                 <div className="tag">Automation</div>
                 <div className="tag">Robotics</div>
+                <div className="tag">Backend Developer as Django</div>
+                <div className="tag">Prompt Engineering</div>
+                <div className="tag">Leadership Quality</div>
               </div>
             </div>
           </div>
@@ -445,10 +460,11 @@ const LuxuryHomeView = ({ heroData, skillsData, projectsData }) => {
             </div>
             
             <div className="footer-nav">
-              <a href="#" className="footer-link">Home</a>
-              <a href="#" className="footer-link">About</a>
-              <a href="#" className="footer-link">Portfolio</a>
-              <a href="#" className="footer-link">Contact</a>
+              <a href="/" className="footer-link">Home</a>
+              <a href="/gallery" className="footer-link">Gallery</a>
+              <a href="#expertise" className="footer-link">Expertise</a>
+              <a href="#projects" className="footer-link">Portfolio</a>
+              <a href="#contact" className="footer-link">Contact</a>
             </div>
           </div>
         </div>

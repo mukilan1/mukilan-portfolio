@@ -2,7 +2,7 @@ class HomeModel {
   constructor() {
     this.heroData = {
       name: "Mukilan",
-      title: "App Developer | Automation Specialist | Robotics Engineer",
+      title: "App Developer | Automation Specialist | Robotics Engineer | Backend Developer as Django | Prompt Engineering | Leadership Quality",
       subTitle: "Bringing innovative solutions to life through technology",
       entrepreneur: "Entrepreneur & Technology Visionary",
       image: "/profile.jpg"

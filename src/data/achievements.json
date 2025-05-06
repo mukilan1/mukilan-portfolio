@@ -1,0 +1,85 @@
+{
+  "title": "My Achievements & Awards",
+  "subtitle": "A showcase of recognition and milestones throughout my professional journey",
+  "categories": [
+    "All",
+    "Technical",
+    "Leadership",
+    "Innovation",
+    "Academic"
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Innovation Award in AI Solutions",
+      "description": "Recognized for developing a groundbreaking AI system that increased operational efficiency by 45% for enterprise clients.",
+      "date": "August 2023",
+      "image": "/achievements/innovation-award.jpg",
+      "category": "Innovation",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Top Contributor - Open Source Projects",
+      "description": "Acknowledged as one of the top contributors to open-source automation frameworks, with over 200 significant commits.",
+      "date": "March 2023",
+      "image": "/achievements/open-source.jpg",
+      "category": "Technical",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Leadership Excellence Award",
+      "description": "Awarded for exceptional team leadership in delivering complex robotics projects under challenging timelines.",
+      "date": "December 2022",
+      "image": "/achievements/leadership.jpg",
+      "category": "Leadership",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Patent for Automated Workflow System",
+      "description": "Obtained patent for developing a novel approach to workflow automation leveraging AI and machine learning.",
+      "date": "June 2022",
+      "image": "/achievements/patent.jpg",
+      "category": "Innovation",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Best Paper Award - Tech Conference 2022",
+      "description": "Research paper on 'Next-Gen Automation Technologies' recognized as the best paper at the International Tech Conference.",
+      "date": "May 2022",
+      "image": "/achievements/best-paper.jpg",
+      "category": "Academic",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Hackathon Champion",
+      "description": "Led a team to victory in a 48-hour hackathon, developing a solution for smart city infrastructure management.",
+      "date": "February 2022",
+      "image": "/achievements/hackathon.jpg",
+      "category": "Technical",
+      "featured": true
+    },
+    {
+      "id": 7,
+      "title": "Community Mentor Award",
+      "description": "Recognized for mentoring 50+ aspiring developers and helping them transition into successful tech careers.",
+      "date": "November 2021",
+      "image": "/achievements/mentor.jpg",
+      "category": "Leadership",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "Distinguished Alumni Award",
+      "description": "Honored by alma mater for exceptional contributions to the field of technology and innovation.",
+      "date": "September 2021",
+      "image": "/achievements/alumni.jpg",
+      "category": "Academic",
+      "featured": false
+    }
+  ]
+}
