@@ -3048,7 +3048,7 @@ img {
   bottom: 10px;
   left: 10px;
   background-color: rgba(0, 0, 0, 0.6);
-  color: var(--text-primary);
+  color: var (--text-primary);
   font-size: 0.7rem;
   padding: 0.25rem 0.75rem;
   border-radius: 2px;
@@ -3436,5 +3436,309 @@ img {
   
   .navbar-links ul {
     gap: 1rem;
+  }
+}
+
+/* Expertise Showcase - Modern Redesign */
+.expertise-showcase {
+  padding: 3rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.expertise-card {
+  position: relative;
+  background: rgba(20, 20, 20, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  z-index: 1;
+}
+
+.expertise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.expertise-card.active {
+  background: rgba(25, 25, 25, 0.8);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.card-content {
+  position: relative;
+  padding: 1.75rem;
+  z-index: 2;
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.expertise-card.active .card-glow,
+.expertise-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* Card header styling */
+.expertise-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  justify-content: space-between;
+}
+
+.expertise-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  margin-right: 1rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.expertise-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  flex-grow: 1;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.expertise-level-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  background: linear-gradient(135deg, var(--luxury-gold-dark), var(--luxury-gold));
+  border-radius: 30px;
+  font-weight: 600;
+  color: var(--luxury-black);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 0.75rem;
+}
+
+.level-value {
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Progress bar styling */
+.expertise-progress {
+  margin-bottom: 1.25rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--luxury-gold-dark), var(--luxury-gold));
+  border-radius: 3px;
+  transition: width 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmerEffect 2s infinite;
+}
+
+@keyframes shimmerEffect {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Card details styling */
+.expertise-details {
+  margin-bottom: 1.25rem;
+}
+
+.expertise-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.skill-attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.attribute {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.attribute-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.attribute-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--luxury-gold);
+}
+
+/* Card footer styling */
+.card-footer {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: var(--luxury-gold);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.expand-button:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.up {
+  transform: rotate(180deg);
+}
+
+/* Card decorations */
+.card-decoration {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--luxury-gold);
+  opacity: 0;
+  transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+  z-index: 2;
+}
+
+.card-decoration.top-left {
+  top: 6px;
+  left: 6px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.card-decoration.top-right {
+  top: 6px;
+  right: 6px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.card-decoration.bottom-left {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.card-decoration.bottom-right {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.expertise-card:hover .card-decoration,
+.expertise-card.active .card-decoration {
+  opacity: 0.6;
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .expertise-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .expertise-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise-grid {
+    grid-template-columns: 1fr;
   }
 }
